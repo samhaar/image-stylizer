@@ -2,13 +2,20 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 const userRouter = require('./routers/userRouter');
-// const Controller = require('./controllers/userController');
+const sessionController = require('./controllers/sessionController');
 
+const mongoConnect = require('./models/mongoConnect');
+
+
+
+mongoConnect();
 const app = express();
 
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use('/user', userRouter);
 
@@ -17,9 +24,11 @@ if (process.env.NODE_ENV === 'production') {
   // statically serve everything in the build folder on the route '/build'
   app.use('/build', express.static(path.join(__dirname, '../build')));
 
-  // serve index.html on the route '/'
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/index.html'));
+  // serve app
+  app.get('/', 
+  sessionController.validateSession,
+  (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/app/index.html'));
   });
 }
 

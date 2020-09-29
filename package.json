@@ -25,7 +25,11 @@
     ]
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.12.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.7",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.3.1"
