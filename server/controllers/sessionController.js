@@ -11,12 +11,16 @@ sessionController.setJWT = (req, res, next) => {
 
   const cookieOptions = {
     httpOnly: true,
-    // expires: new Date(Date.now() + (EXPIRATION_TIME_IN_SECS + 60) * 1000),
+    expires: new Date(Date.now() + (EXPIRATION_TIME_IN_SECS + 60) * 1000),
   };
 
-  const { id } = res.locals.user;
+  const { username, id } = res.locals.user;
+  const payload = {
+    sub: id,
+    username: username,
+  }
 
-  jwt.sign({ id }, SECRET, jwtOptions, (err, token) => {
+  jwt.sign(payload, SECRET, jwtOptions, (err, token) => {
     if (err) return next(err);
     res.cookie('jwt', token, cookieOptions);
     return next();
