@@ -1,0 +1,51 @@
+{
+  "name": "image-stylizer",
+  "version": "1.0.0",
+  "description": "playground for magenta.js image stylizer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samhaar/image-stylizer.git"
+  },
+  "author": "Sam Haar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samhaar/image-stylizer/issues"
+  },
+  "homepage": "https://github.com/samhaar/image-stylizer#readme",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production nodemon server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack-dev-server --open & nodemon server/server.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "client"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^4.3.0",
+    "http-proxy-middleware": "^1.0.5",
+    "isomorphic-fetch": "^2.2.1",
+    "nodemon": "^1.18.9",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
