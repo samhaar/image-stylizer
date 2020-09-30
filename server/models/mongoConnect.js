@@ -9,6 +9,6 @@ module.exports = () => {
       useUnifiedTopology: true,
       dbName: 'image_stylizer',
     })
-    .then(() => console.log("Connected to Mongo DB."))
+    .then(() => console.log('Connected to Mongo DB.'))
     .catch((err) => console.log(err));
 };

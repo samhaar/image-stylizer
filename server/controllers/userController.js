@@ -18,14 +18,11 @@ userController.validateInput = (req, res, next) => {
 };
 
 userController.checkIfDuplicateEntry = async (req, res, next) => {
-  console.log("in check if duplicate");
-
   const { username } = req.body;
   
   try {
     const results = await User.find({ username });
     if (results.length > 0){
-      console.log('duplicate found');
       return res.json({ duplicateEntry: true });
     }
     return next();
@@ -36,12 +33,11 @@ userController.checkIfDuplicateEntry = async (req, res, next) => {
 };
 
 userController.createNewUser = async (req, res, next) => {
-  console.log("in create new user");
   const { username, password } = req.body;
 
   try {
     const userDoc = await User.create({ username, password });
-    res.locals.user = userDoc;
+    res.locals.userDoc = userDoc;
     return next();
   } 
   catch(err) {
@@ -50,7 +46,6 @@ userController.createNewUser = async (req, res, next) => {
 }
 
 userController.authenticate = async (req, res, next) => {
-  console.log("in authenticate");
   const reject = () => res.json({ loginFailure: true });
   
   const { username, password } = req.body;
@@ -62,7 +57,7 @@ userController.authenticate = async (req, res, next) => {
     const isPwValid = await bcrypt.compare(password, userDoc.password);
     if(!isPwValid) return reject();
     
-    res.locals.user = userDoc;
+    res.locals.userDoc = userDoc;
     return next();
   }
   catch(err) {

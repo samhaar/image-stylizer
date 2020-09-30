@@ -14,7 +14,7 @@ sessionController.setJWT = (req, res, next) => {
     expires: new Date(Date.now() + (EXPIRATION_TIME_IN_SECS + 60) * 1000),
   };
 
-  const { username, id } = res.locals.user;
+  const { username, id } = res.locals.userDoc;
   const payload = {
     sub: id,
     username: username,
@@ -38,7 +38,11 @@ sessionController.validateSession = (req, res, next) => {
   jwt.verify(token, SECRET, (err, decoded) => {
     if (err) return redirect();
 
-    res.locals.userId = decoded.id;
+    const { sub, username } = decoded;
+    res.locals.user = {
+      username,
+      id: sub,
+    };
     return next();
   });
 };

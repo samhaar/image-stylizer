@@ -2,15 +2,14 @@ const path = require('path');
 
 module.exports = {
 
-  entry: './client/index.js',
-  // entry: {
-  //   pageOne: './src/pageOne/index.js',
-  //   pageTwo: './src/pageTwo/index.js',
-  //   pageThree: './src/pageThree/index.js'
-  // }
+  // entry: './client/index.js',
+  entry: {
+    app: './client/app/appIndex.js',
+    login: './client/login/loginIndex.js',
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   mode: process.env.NODE_ENV,
   module: {
@@ -36,8 +35,11 @@ module.exports = {
     ],
   },
   devServer: {
+    // index: '/client/app/index.html',
+    // openPage: 'user/login',
     publicPath: '/build/',
     proxy: {
+      '/user': 'http://localhost:3000/',
       '/api': 'http://localhost:3000/',
     },
   },

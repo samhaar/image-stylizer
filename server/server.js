@@ -9,22 +9,19 @@ const sessionController = require('./controllers/sessionController');
 
 const mongoConnect = require('./models/mongoConnect');
 
-
-
 mongoConnect();
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// user routes
 app.use('/user', userRouter);
 
-
+// app route
 if (process.env.NODE_ENV === 'production') {
-  // statically serve everything in the build folder on the route '/build'
-  app.use('/build', express.static(path.join(__dirname, '../build')));
+  app.use('/build', express.static(path.resolve(__dirname, '../build/')));
 
-  // serve app
   app.get('/', 
   sessionController.validateSession,
   (req, res) => {
