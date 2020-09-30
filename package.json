@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@magenta/image": "^0.2.1",
     "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.12.3",

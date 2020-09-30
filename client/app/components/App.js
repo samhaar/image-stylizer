@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Playground from './Playground';
 
 class App extends Component {
   constructor(){
@@ -8,7 +9,7 @@ class App extends Component {
 
   render() {
     return (
-      <h1>APP WUT WUT UWTTT</h1>
+      <Playground />
     );
   }
 
