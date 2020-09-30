@@ -28,7 +28,7 @@ sessionController.setJWT = (req, res, next) => {
 };
 
 sessionController.validateSession = (req, res, next) => {
-  const redirect = () => res.redirect('/user/login');
+  const redirect = () => res.redirect('/auth');
 
   if (!req.cookies) return redirect();
 

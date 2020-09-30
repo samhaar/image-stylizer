@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 import LoginDisplay from './LoginDisplay';
 
+const getInitialState = () => {
+  return {
+    username: '',
+    password: '',
+    enableLoginButton: false,
+    loginFailure: false,
+  }
+};
+
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = this.getInitialState();
+  constructor(props) {
+    super(props);
+    this.state = getInitialState();
+    
+    this.switchToSignup = props.switchToSignup;
     this.usernameRef = React.createRef();
 
-    this.handlePw = this.handlePw.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
     this.logIn = this.logIn.bind(this);
     this.focusUsername = this.focusUsername.bind(this);
-    this.switchToSignup = this.switchToSignup.bind(this);
-    this.switchToLogin = this.switchToLogin.bind(this);
-  }
-
-  getInitialState() {
-    return {
-      username: '',
-      password: '',
-      enableButton: false,
-      loginFailure: false,
-      inSignup: false,
-    }
   }
 
   focusUsername() {
     this.usernameRef.current.focus();
   }
 
-  handlePw(e) {
+  handlePassword(e) {
     const password = e.target.value;
     if (password.length > 16) return;
 
     const newState = {};
-    newState.enableButton = password && this.state.username;
+    newState.enableLoginButton = password && this.state.username;
     if (this.state.loginFailure) newState.loginFailure = false;
     newState.password = password;
     this.setState(newState);
@@ -47,7 +46,7 @@ class Login extends Component {
     ) return;
 
     const newState = {};
-    newState.enableButton = username && this.state.password;
+    newState.enableLoginButton = username && this.state.password;
     if (this.state.loginFailure) newState.loginFailure = false;
     newState.username = username;
     this.setState(newState);
@@ -55,7 +54,9 @@ class Login extends Component {
 
   logIn() {
     const { username, password } = this.state;
-    this.setState(this.getInitialState());
+    if (!username || !password) return;
+    
+    this.setState(getInitialState());
     this.focusUsername();
     fetch('/user/login', {
       method: 'POST',
@@ -77,34 +78,23 @@ class Login extends Component {
       .catch((err) => console.log(err));
   }
 
-  switchToSignup() {
-    this.setState({ inSignup: true });
-  }
-
-  switchToLogin() {
-    this.setState({ inSignup: false });
-  }
-
   componentDidMount() {
     this.focusUsername();
   }
 
   render() {
     return (
-      <div>
-        <LoginDisplay
-          loginFailure={this.state.loginFailure}
-          usernameRef={this.usernameRef}
-          username={this.state.username}
-          handleUsername={this.handleUsername}
-          password={this.state.password}
-          handlePw={this.handlePw}
-          enableButton={this.state.enableButton}
-          logIn={this.logIn}
-          switchToSignup={this.switchToSignup}
-        />
-        {this.state.inSignup ? <h1>SIGN UP HERE DAWG</h1> : null}
-      </div>
+      <LoginDisplay
+        loginFailure={this.state.loginFailure}
+        usernameRef={this.usernameRef}
+        username={this.state.username}
+        handleUsername={this.handleUsername}
+        password={this.state.password}
+        handlePassword={this.handlePassword}
+        enableLoginButton={this.state.enableLoginButton}
+        logIn={this.logIn}
+        switchToSignup={this.switchToSignup}
+      />
     );
   }
 }

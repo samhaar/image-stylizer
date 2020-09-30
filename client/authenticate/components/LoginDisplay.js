@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const LoginDisplay = (props) => {
   const { 
@@ -7,8 +7,8 @@ const LoginDisplay = (props) => {
     username,
     handleUsername,
     password,
-    handlePw,
-    enableButton,
+    handlePassword,
+    enableLoginButton,
     logIn,
     switchToSignup,
   } = props;
@@ -23,19 +23,22 @@ const LoginDisplay = (props) => {
         ref={usernameRef}
         value={username}
         onChange={handleUsername}
+        onKeyDown={(e) => { 
+          if (e.key === 'Enter') logIn();
+        }}
       ></input>
       <label htmlFor="password">Password</label>
       <input 
         type='password' 
         id='password' 
         value={password} 
-        onChange={handlePw}
+        onChange={handlePassword}
         onKeyDown={(e) => { 
           if (e.key === 'Enter') logIn();
         }}
       ></input>
       <button 
-        disabled={!enableButton}
+        disabled={!enableLoginButton}
         onClick={logIn}
       >Log In</button>
       <button

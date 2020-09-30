@@ -4,8 +4,8 @@ module.exports = {
 
   // entry: './client/index.js',
   entry: {
-    app: './client/app/appIndex.js',
-    login: './client/login/loginIndex.js',
+    app: './client/app/AppIndex.js',
+    login: './client/authenticate/AuthIndex.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),

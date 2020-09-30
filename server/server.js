@@ -22,6 +22,10 @@ app.use('/user', userRouter);
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.resolve(__dirname, '../build/')));
 
+  app.get('/auth', (req, res) => {
+    return res.sendFile(path.join(__dirname, '../client/authenticate/index.html'));
+  });
+
   app.get('/', 
   sessionController.validateSession,
   (req, res) => {
