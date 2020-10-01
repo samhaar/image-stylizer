@@ -6,8 +6,10 @@ import ImageTile from '../components/ImageTile';
 
 const mapStateToProps = ({
   library: { imageList },
+  stylizer: { width },
 }) => ({
   imageList,
+  width,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,13 +18,14 @@ const mapDispatchToProps = (dispatch) => ({
   setStyle: (imgObj) => dispatch(setStyle(imgObj)),
 });
 
-const ImageLibrary = ({ imageList, deleteImg, setContent, setStyle }) => {
+const ImageLibrary = ({ imageList, deleteImg, setContent, setStyle, width }) => {
   const imageTiles = imageList.map(({ src, size, _id }, idx) => {
     return (
       <ImageTile
         key={'libraryImage' + idx}
         src={src} 
         size={size}
+        width={width}
         id={_id}
         idx={idx}
         deleteImg={deleteImg}

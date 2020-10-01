@@ -81,6 +81,7 @@ const stylizerReducer = (state = initialState, action) => {
         ...state,
         content: state.style,
         style: state.content,
+        stylizer: state.stylizer
       };
     
     case types.SET_CONTEXT:

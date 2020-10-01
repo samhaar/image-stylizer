@@ -13,7 +13,6 @@ export const SET_CONTENT_URL = 'SET_CONTENT_URL';
 export const SET_CONTEXT = 'SET_CONTEXT';
 export const SET_HEIGHT = 'SET_HEIGHT';
 
-
 // library actions
 export const LOAD_LIBRARY = 'LOAD_LIBRARY';
 export const ADD_IMG = 'ADD_IMG';

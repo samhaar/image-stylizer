@@ -28,7 +28,7 @@ class Stylizer extends Component {
   componentDidMount(){
     this.model.initialize()
     .then(() => {
-      console.log('model initialized');
+      this.props.enableStylizer();
     });
 
   const canvas = this.props.canvasRef.current;
@@ -60,6 +60,8 @@ class Stylizer extends Component {
 
   componentDidUpdate(){
     const { height, contentImageRef, setHeight } = this.props;
+    if (!contentImageRef.current) return;
+
     const contentHeight = contentImageRef.current.height
     if (height !== contentHeight){
       setHeight(contentHeight);
@@ -78,10 +80,18 @@ class Stylizer extends Component {
       styleImageRef,
       canvasRef,
       addImg,
+      loadFileToContent,
+      loadFileToStyle,
+      styleSwap,
+      contentUrlInputValue,
+      styleUrlInputValue,
+      setContentUrl,
+      setStyleUrl,
+      loadUrlToContent,
+      loadUrlToStyle,
+      stylizerEnabled,
     } = this.props;
 
-    console.log(stylizer);
-    
     return (
       <div>
         {/* CONTENT DISPLAY */}
@@ -92,6 +102,11 @@ class Stylizer extends Component {
           width={width} 
           height={height}
           addImg={addImg}
+          handleFile={loadFileToContent}
+          swap={styleSwap}
+          value={contentUrlInputValue}
+          urlChange={(e) => setContentUrl(e.target.value)}
+          urlSubmit={loadUrlToContent}
         />
         {/* STYLE DISPLAY */}
         <ImageDisplay 
@@ -101,6 +116,11 @@ class Stylizer extends Component {
           width={width} 
           height={height}
           addImg={addImg}
+          handleFile={loadFileToStyle}
+          swap={styleSwap}
+          value={styleUrlInputValue}
+          urlChange={(e) => setStyleUrl(e.target.value)}
+          urlSubmit={loadUrlToStyle}
         />
         {/* STYLIZER CANVAS */}
         <StylizerCanvas 
@@ -111,6 +131,7 @@ class Stylizer extends Component {
           width={width} 
           height={height} 
           addImg={addImg}
+          stylizerEnabled={stylizerEnabled}
         />
       </div>
     );

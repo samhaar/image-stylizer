@@ -1,10 +1,10 @@
 import React from 'react';
 
-const StylizerCanvas = ({ canvasRef, width, height, stylize, src, size, addImg }) => (
+const StylizerCanvas = ({ canvasRef, width, height, stylize, src, size, addImg, stylizerEnabled }) => (
   <div style={{display: 'inline-block'}}>
     <canvas ref={canvasRef} width={width} height={height}></canvas>
     <div>
-      <button onClick={stylize}>STYLIZE</button>
+      <button onClick={stylize} disabled={!stylizerEnabled}>STYLIZE</button>
       <button onClick={() => {
         if (src && size) addImg({ src, size });
       }}>save</button>

@@ -54,7 +54,13 @@ export const disableStylizer = () => ({
 
 export const loadFileToContent = (e) => (dispatch) => {
   const file = e.target.files[0];
+  if (!file) return;
+  
   const { size } = file;
+  if (size > (1000 * 1000)){
+    console.log("big file");
+    return;
+  }
   const fr = new FileReader();
   fr.addEventListener('load', () => {
     dispatch(setContent({
@@ -62,7 +68,7 @@ export const loadFileToContent = (e) => (dispatch) => {
       size,
     }));
   })
-  if (file) fr.readAsDataURL(file);
+  fr.readAsDataURL(file);
 }
 
 export const loadFileToStyle = (e) => (dispatch) => {
