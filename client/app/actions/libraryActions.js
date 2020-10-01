@@ -27,7 +27,7 @@ export const addImg = (imgObj) => (dispatch) =>  {
   })
     .then((res) => res.json())
     .then((data) => {
-      if(data.id){
+      if(data){
         return dispatch({
           type: types.ADD_IMG,
           payload: data,

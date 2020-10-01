@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ImageDisplay = ({ src }) => (
+const ImageDisplay = ({ src, size, addImg, imgRef }) => (
   <div style={{display: 'inline-block'}}>
-    <img src={src}></img>
+    <img ref={imgRef} src={src} ></img>
     <div>
-      <button>save</button>
-      <button>download</button>
       <button>load</button>
+      <button onClick={()=>addImg({ src, size })}>save</button>
+      <button><a href={src} download={true}>download</a></button>
     </div>
   </div>
 );

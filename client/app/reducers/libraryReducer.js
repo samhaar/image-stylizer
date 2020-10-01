@@ -17,13 +17,12 @@ const handleLoadLibrary = (state, action) => {
 }
 
 const handleAddImg = (state, action) => {
-  const { id, src, size } = action.payload;
-  const imageList = imageList.slice();
+  const { _id, src, size } = action.payload;
+  const imageList = state.imageList.slice();
   imageList.push({
-    id,
+    _id,
     src,
     size,
-    synced: false,
   });
 
   return {

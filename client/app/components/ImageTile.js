@@ -4,9 +4,9 @@ const ImageTile = ({ src, size, id, idx, setContent, setStyle, deleteImg }) => (
   <div style={{display: 'inline-block'}}>
     <img src={src}></img>
     <div>
-      <button onClick={() => setContent({ src, size })}>content</button>
-      <button onClick={() => setStyle({ src, size })}>style</button>
-      <button>download</button>
+      <button onClick={() => setContent({ src, size })}>set as content</button>
+      <button onClick={() => setStyle({ src, size })}>set as style</button>
+      <button><a href={src} download={true}>download</a></button>
       <button onClick={() => deleteImg(id, idx)}>delete</button>
     </div>
   </div>

@@ -13,7 +13,7 @@ const mongoConnect = require('./models/mongoConnect');
 mongoConnect();
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '5mb' }));
 app.use(cookieParser());
 
 // routers

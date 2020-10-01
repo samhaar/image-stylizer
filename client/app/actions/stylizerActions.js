@@ -17,6 +17,19 @@ export const setStyle = (imgObj) => {
   };
 }
 
+export const setStylizerSrc = (imgObj) => {
+  const { src, size } = imgObj;
+  return {
+    type: types.SET_STYLIZER_SRC,
+    payload: { src, size },
+  };
+}
+
+export const setHeight = (height) => ({
+  type: types.SET_HEIGHT,
+  payload: height,
+});
+
 export const setStyleUrl = (url) => ({
   type: types.SET_STYLE_URL,
   payload: url,
@@ -108,4 +121,9 @@ export const loadUrlToStyle = () => (dispatch, getState) => {
     })
   .catch(console.error);
 };
+
+export const setContext = (context) => ({
+  type: types.SET_CONTEXT,
+  payload: context,
+});
 
