@@ -14,7 +14,14 @@ mongoConnect();
 const app = express();
 
 app.use(bodyParser.json());
+
+// app.use(  (req, res, next) => { 
+//   console.log('here we are');
+//   return next();
+// });
+
 app.use(cookieParser());
+
 
 // routers
 app.use('/user', userRouter);

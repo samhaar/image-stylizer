@@ -7,11 +7,12 @@ const sessionController = require('../controllers/sessionController');
 
 const router = express.Router();
 
-// if (process.env.NODE_ENV === 'production') {
-//   router.get('/signup', (req, res) => {
-//     return res.sendFile(path.join(__dirname, '../../client/signup/signup.html'));
-//   });
-// }
+router.get('/',
+  sessionController.validateSession,
+  (req, res) => {
+    res.status(200).json(res.locals.user);
+  }
+)
 
 router.post('/login',
   userController.validateInput,

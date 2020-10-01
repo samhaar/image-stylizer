@@ -47,7 +47,7 @@ export const deleteImg = (id, idx) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.sucess){
+      if (data.success){
         return dispatch({
           type: types.DELETE_IMG,
           payload: idx,
