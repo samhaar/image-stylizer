@@ -1,19 +1,9 @@
-import React, { Component } from 'react';
-import Playground from './components/Playground';
+import React from 'react';
+// import Playground from './components/Playground';
+import MainWrapper from './containers/MainWrapper'
 
-class App extends Component {
-  constructor(){
-    super();
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <Playground />
-    );
-  }
-
-}
-
+const App = () => (
+  <MainWrapper />
+);
 
 export default App;

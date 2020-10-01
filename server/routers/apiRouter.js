@@ -32,9 +32,9 @@ router.delete('/images',
   }
 );  
 
-// router.post('/goat', imageController.saveGoat, (req, res) => {
-//   return res.status(200).send('DIT IT');
-// })
+router.post('/goat', imageController.saveGoat, (req, res) => {
+  return res.status(200).send('DIT IT');
+})
 
 // router.get('/goat', imageController.getGoat, (req, res) => {
 //   return res.status(200).send(res.locals.goat);

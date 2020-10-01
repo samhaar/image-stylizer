@@ -14,6 +14,13 @@ router.get('/',
   }
 )
 
+router.post('/logout',
+  sessionController.logOut,
+  (req, res) => {
+    return res.redirect('/');
+  }
+)
+
 router.post('/login',
   userController.validateInput,
   userController.authenticate, 

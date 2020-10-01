@@ -38,6 +38,7 @@ export const addImg = (imgObj) => (dispatch) =>  {
 };
 
 export const deleteImg = (id, idx) => (dispatch) => {
+
   fetch('/api/images', {
     method: 'DELETE',
     headers: {
@@ -54,5 +55,5 @@ export const deleteImg = (id, idx) => (dispatch) => {
         })
       }
     })
-    .catch(err => console.err(err));
+    .catch(err => console.error(err));
 };

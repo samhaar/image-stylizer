@@ -43,11 +43,11 @@ imageController.deleteImage = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-// imageController.saveGoat = (req, res, next) => {
-//   Image.create({ imageDataUrl: goat, size: goatSize, userId: smittyId })
-//     .then(() => next())
-//     .catch((err) => console.log(err));
-// };
+imageController.saveGoat = (req, res, next) => {
+  Image.create({ src: goat, size: goatSize, userId: smittyId })
+    .then(() => next())
+    .catch((err) => console.log(err));
+};
 
 // imageController.getGoat = (req, res, next) => {
 //   Image.findOne({})

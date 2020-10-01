@@ -8,9 +8,8 @@ import store from './store';
 // import styles from './scss/application.scss';
 
 render(
-  // <Provider store={store}>
+  <Provider store={store}>
     <App />
-  // </Provider>
-  ,
+  </Provider>,
   document.getElementById('root')
 );

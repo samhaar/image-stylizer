@@ -11,4 +11,14 @@ export const getUsername = () => (dispatch) => {
       });
     })
     .catch(console.error);
-};  
+};
+
+export const logOut = () => {
+  fetch('/user/logout', {
+    method: 'POST'
+  })
+  .then((res) => {
+    if (res.redirected) window.location.href = res.url;
+  })
+  .catch(console.error);
+}

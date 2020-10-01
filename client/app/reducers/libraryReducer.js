@@ -34,7 +34,7 @@ const handleAddImg = (state, action) => {
 
 const handleDeleteImg = (state, action) => {
   const idx = action.payload;
-  const imageList = imageList.slice();
+  const imageList = state.imageList.slice();
   imageList.splice(idx, 1);
   return {
     ...state,

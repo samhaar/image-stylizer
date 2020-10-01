@@ -47,4 +47,14 @@ sessionController.validateSession = (req, res, next) => {
   });
 };
 
+sessionController.logOut = (req, res, next) => {
+  const cookieOptions = {
+    httpOnly: true,
+    expires: new Date(Date.now() + 3 * 1000),
+  };
+
+  res.cookie('jwt', 'sjhdfkj', cookieOptions);
+  return next();
+}
+
 module.exports = sessionController;
