@@ -126,6 +126,7 @@ class Playground extends Component {
 
   handleFile(e) {
     const file = e.target.files[0];
+    console.log(file.size);
     const fr = new FileReader();
     fr.addEventListener('load', () => {
       this.setState({ src1: fr.result });
