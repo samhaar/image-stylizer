@@ -17,7 +17,7 @@ const SignupDisplay = (props) => {
   } = props;
 
   return (
-    <div>
+    <div id="signup">
        {duplicateEntry ? <h3 key='failed'>User Name already taken! sawwy</h3> : null}
       <label htmlFor="username">Username</label>
       <input 

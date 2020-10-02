@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ImageTile = ({ src, size, id, idx, setContent, setStyle, deleteImg, width }) => (
-  <div style={{display: 'inline-block'}}>
+  <div className="ImageTile">
     <img src={src} width={width}></img>
     <div>
       <button onClick={() => setContent({ src, size })}>set as content</button>

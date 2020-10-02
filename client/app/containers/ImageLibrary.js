@@ -36,7 +36,7 @@ const ImageLibrary = ({ imageList, deleteImg, setContent, setStyle, width }) => 
   })
   
   return (
-    <div>
+    <div id="libraryContainer">
       {imageTiles}
     </div>
   );

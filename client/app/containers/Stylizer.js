@@ -93,7 +93,7 @@ class Stylizer extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="StylizerWrapper">
         {/* CONTENT DISPLAY */}
         <ImageDisplay 
           imgRef={contentImageRef} 

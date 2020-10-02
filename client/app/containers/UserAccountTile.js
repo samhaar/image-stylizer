@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const UserAccountTile = ({ username }) => (
-  <div>
+  <div id="UserTile">
     <p>Welcome <strong>{username}</strong></p>
     <button onClick={logOut}>Log Out</button>
   </div>

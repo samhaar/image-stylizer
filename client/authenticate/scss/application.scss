@@ -1,0 +1,26 @@
+$background: rgb(77, 93, 97);
+$teal: rgb(115, 138, 132);
+
+
+body {
+  background-color: $background;
+}
+
+#login, #signup {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // width: 300px;
+}
+
+
+button {
+  border: solid black 1px;
+  border-radius: 3px;
+  background-color: $teal;
+  width: 150px;
+  margin: 5px;
+}
+

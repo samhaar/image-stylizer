@@ -14,7 +14,7 @@ const LoginDisplay = (props) => {
   } = props;
 
   return (
-    <div>
+    <div id="login">
       {loginFailure ? <h3 key='failed'>LOGIN FAILED, sawwy</h3> : null}
       <label htmlFor="username">Username</label>
       <input 
